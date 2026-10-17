@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frases | Versos del alma</title>
+
+    <style>
+        :root {
+            --fondo: #f8f5ed;
+            --papel: rgba(255, 253, 248, 0.94);
+            --verde: #71836b;
+            --verde-oscuro: #59664f;
+            --verde-claro: #e8eddf;
+            --lavanda: #a7a0ba;
+            --texto: #515747;
+            --gris: #7d8172;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            background-color: var(--fondo);
+            background-image: url("img/fondo-versos.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--texto);
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: rgba(232, 237, 223, 0.91);
+            padding: 22px;
+            border-bottom: 1px solid #d6dfcb;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--verde-oscuro);
+        }
+
+        .logo span {
+            color: var(--lavanda);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--verde-oscuro);
+            padding: 9px 12px;
+            border-radius: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            transition: background .25s ease, transform .25s ease;
+        }
+
+        nav a:hover,
+        nav a.activo {
+            background: #d7e1cc;
+        }
+
+        nav a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* PORTADA */
+        .portada {
+            text-align: center;
+            padding: 75px 20px;
+            background: linear-gradient(
+                135deg,
+                rgba(237, 240, 230, 0.84),
+                rgba(248, 245, 237, 0.78),
+                rgba(233, 229, 240, 0.84)
+            );
+        }
+
+        .portada small {
+            color: var(--verde);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: normal;
+            color: var(--verde-oscuro);
+            margin: 20px 0;
+        }
+
+        .portada p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.8;
+            color: var(--gris);
+            font-size: 1.1rem;
+        }
+
+        /* SECCIONES */
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 55px 22px;
+            background: transparent;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .titulo h2 {
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            font-weight: normal;
+            color: var(--verde-oscuro);
+            margin-bottom: 10px;
+        }
+
+        .titulo p {
+            color: var(--gris);
+            line-height: 1.7;
+        }
+
+        /* TARJETAS DE FRASES */
+        .frases {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .frase {
+            background: var(--papel);
+            padding: 28px 23px;
+            border: 1px solid #dfe5d7;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(113, 131, 107, 0.10);
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease,
+                border-color .3s ease,
+                background-color .3s ease;
+        }
+
+        .frase:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(113, 131, 107, 0.18);
+            border-color: rgba(167, 160, 186, 0.7);
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .simbolo {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: inline-block;
+            transition: transform .3s ease;
+        }
+
+        .frase:hover .simbolo {
+            transform: scale(1.2) rotate(8deg);
+        }
+
+        .frase p {
+            color: var(--verde-oscuro);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            font-style: italic;
+            transition: color .3s ease;
+        }
+
+        .frase:hover p {
+            color: #77708f;
+        }
+
+        .categoria {
+            font-family: Arial, sans-serif;
+            font-size: 0.75rem;
+            color: var(--verde);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+
+        /* FRASE ESPECIAL */
+        .especial {
+            background: rgba(232, 237, 223, 0.87);
+            padding: 65px 20px;
+            text-align: center;
+        }
+
+        .especial h2 {
+            color: var(--verde-oscuro);
+            font-size: 2rem;
+            font-weight: normal;
+        }
+
+        .especial blockquote {
+            max-width: 800px;
+            margin: 25px auto;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            line-height: 1.6;
+            font-style: italic;
+            color: var(--verde-oscuro);
+            transition: transform .3s ease, color .3s ease;
+        }
+
+        .especial blockquote:hover {
+            transform: scale(1.02);
+            color: #81799f;
+        }
+
+        .especial p {
+            color: var(--gris);
+            line-height: 1.8;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            text-align: center;
+            padding: 28px 15px;
+            background: rgba(89, 102, 79, 0.96);
+            color: var(--fondo);
+            line-height: 1.8;
+        }
+
+        footer small {
+            color: var(--verde-claro);
+        }
+
+        /* CORAZONES Y DESTELLOS FLOTANTES */
+        #capa-frases {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 999999;
+        }
+
+        .particula-frase {
+            position: absolute;
+            top: -35px;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+            animation: caerFrase linear forwards;
+        }
+
+        @keyframes caerFrase {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(.8);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.85;
+            }
+
+            50% {
+                transform: translateY(50vh) rotate(180deg) scale(1.1);
+                opacity: 0.75;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg) scale(.8);
+                opacity: 0;
+            }
+        }
+
+        /* ADAPTACIÓN A TABLETAS */
+        @media (max-width: 900px) {
+            .frases {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* ADAPTACIÓN A CELULARES */
+        @media (max-width: 760px) {
+            body {
+                background-attachment: scroll;
+                background-position: center top;
+            }
+
+            .nav {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .portada {
+                padding: 55px 20px;
+            }
+
+            .frases {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 40px 18px;
+            }
+        }
+
+        /* RESPETAR LAS PREFERENCIAS DE MOVIMIENTO */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            #capa-frases {
+                display: none;
+            }
+
+            .frase,
+            .simbolo,
+            nav a,
+            .especial blockquote {
+                transition: none;
+            }
+
+            .frase:hover,
+            .frase:hover .simbolo,
+            .especial blockquote:hover,
+            nav a:hover {
+                transform: none;
+            }
+        }
+
+/* Reproductor musical de Frases */
+.reproductor-frases {
+    max-width: 520px;
+    margin: 35px auto;
+    padding: 22px;
+    text-align: center;
+    background: rgba(232, 237, 224, 0.90);
+    border: 1px solid #c4d0bb;
+    border-radius: 22px;
+    box-shadow: 0 5px 18px rgba(80, 100, 75, 0.12);
+}
+
+.reproductor-frases h3 {
+    color: #76658b;
+    margin: 10px 0 18px;
+}
+
+.reproductor-frases iframe {
+    display: block;
+    border: none;
+    border-radius: 12px;
+}
+
+.dedicatoria-frases {
+    color: #6f7168;
+    font-style: italic;
+    line-height: 1.7;
+    margin-top: 16px;
+}
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <div class="logo">❧ Versos <span>del alma</span></div>
+
+        <nav aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="amor.html">Amor</a>
+            <a href="desamor.html">Desamor</a>
+            <a href="autores.html">Autores</a>
+            <a href="frases.html" class="activo">Frases</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- PORTADA -->
+    <div class="portada">
+        <small>Palabras para sentir</small>
+
+        <h1>Frases del alma</h1>
+
+        <p>
+            A veces, unas pocas palabras pueden expresar lo que
+            llevamos guardado en el corazón. Aquí encontrarás
+            frases para dedicar, recordar, sanar y soñar.
+        </p>
+    </div>
+
+<!-- Música de la página Frases -->
+<section class="reproductor-frases">
+    <p>🎶 Una melodía para sentir</p>
+    <h3>Lo Que Siento — Cuco 💗</h3>
+
+    
+<iframe
+    width="100%"
+    height="160"
+    src="https://www.youtube.com/embed/AjGkbFqi67c"
+    title="Lo Que Siento - Cuco"
+    frameborder="0"
+    allow="autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen>
+</iframe>
+    <p class="dedicatoria-frases">
+        Hay sentimientos que las palabras no alcanzan a explicar. 🌷
+    </p>
+</section>
+
+
+    <!-- FRASES DE AMOR -->
+    <section>
+        <div class="titulo">
+            <h2>Frases de amor</h2>
+            <p>Para esas personas que hacen más bonito nuestro mundo.</p>
+        </div>
+
+        <div class="frases">
+
+            <article class="frase">
+                <div class="simbolo">♡</div>
+                <p>“Entre tantas personas, mi corazón encontró un lugar en ti.”</p>
+                <div class="categoria">Amor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🌿</div>
+                <p>“Amar es encontrar paz incluso en medio del ruido del mundo.”</p>
+                <div class="categoria">Amor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">✨</div>
+                <p>“Si pudiera elegir un momento para repetir, elegiría aquel en el que te conocí.”</p>
+                <div class="categoria">Amor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🤍</div>
+                <p>“No necesito un amor perfecto, sino uno sincero que quiera crecer conmigo.”</p>
+                <div class="categoria">Amor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">☁️</div>
+                <p>“Tu sonrisa tiene esa magia de convertir un día común en uno especial.”</p>
+                <div class="categoria">Amor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🕊️</div>
+                <p>“Qué bonito coincidir con alguien que entiende hasta nuestros silencios.”</p>
+                <div class="categoria">Amor</div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- FRASES DE DESAMOR -->
+    <section>
+        <div class="titulo">
+            <h2>Frases de desamor</h2>
+            <p>Para los sentimientos que duelen, pero también nos enseñan.</p>
+        </div>
+
+        <div class="frases">
+
+            <article class="frase">
+                <div class="simbolo">🍂</div>
+                <p>“A veces, dejar ir también es una forma de amar.”</p>
+                <div class="categoria">Desamor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🌧️</div>
+                <p>“Hay despedidas que terminan una historia, pero no borran lo vivido.”</p>
+                <div class="categoria">Desamor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🥀</div>
+                <p>“Me quedé con los recuerdos de lo que fuimos y las lecciones de lo que terminó.”</p>
+                <div class="categoria">Desamor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🌙</div>
+                <p>“Extrañar no siempre significa querer regresar.”</p>
+                <div class="categoria">Desamor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🪻</div>
+                <p>“Aunque me dolió perderte, aprendí que también merezco elegirme.”</p>
+                <div class="categoria">Desamor</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🦋</div>
+                <p>“No todas las historias están hechas para durar; algunas llegan para enseñarnos.”</p>
+                <div class="categoria">Desamor</div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- FRASES PARA REFLEXIONAR -->
+    <section>
+        <div class="titulo">
+            <h2>Frases para reflexionar</h2>
+            <p>Palabras para recordar lo valioso que es vivir y seguir adelante.</p>
+        </div>
+
+        <div class="frases">
+
+            <article class="frase">
+                <div class="simbolo">🌱</div>
+                <p>“También estás creciendo en los días en los que sientes que no avanzas.”</p>
+                <div class="categoria">Vida</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🌅</div>
+                <p>“Cada amanecer trae una nueva oportunidad para comenzar.”</p>
+                <div class="categoria">Esperanza</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🪷</div>
+                <p>“No tienes que tener todas las respuestas para seguir caminando.”</p>
+                <div class="categoria">Vida</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">🌻</div>
+                <p>“Aprende a florecer incluso cuando la vida no sea como esperabas.”</p>
+                <div class="categoria">Esperanza</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">💫</div>
+                <p>“Tus sentimientos merecen ser escuchados, no escondidos.”</p>
+                <div class="categoria">Sentimientos</div>
+            </article>
+
+            <article class="frase">
+                <div class="simbolo">📖</div>
+                <p>“Tu historia sigue escribiéndose; no te rindas por un capítulo difícil.”</p>
+                <div class="categoria">Vida</div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- CIERRE -->
+    <div class="especial">
+        <h2>Un último verso para ti</h2>
+
+        <blockquote>
+            “Que nunca te falten sueños por cumplir,
+            razones para sonreír y palabras
+            para expresar lo que vive en tu corazón.”
+        </blockquote>
+
+        <p>Con cariño, de Eunice Say &gt;&lt;</p>
+    </div>
+
+</main>
+
+<footer>
+    <strong>2026 Versos del alma - Elaborado por Eunice Say</strong>
+    <br>
+    <small>Un pequeño rincón para sentir, recordar y soñar.</small>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+    }
+
+    const simbolos = ["♡", "💕", "✧", "✨", "🤍"];
+    const cantidadMaxima = 16;
+
+    const capa = document.createElement("div");
+    capa.id = "capa-frases";
+    document.body.appendChild(capa);
+
+    function crearParticula() {
+        if (capa.childElementCount >= cantidadMaxima) {
+            return;
+        }
+
+        const particula = document.createElement("span");
+        particula.className = "particula-frase";
+        particula.textContent =
+            simbolos[Math.floor(Math.random() * simbolos.length)];
+
+        const duracion = 8 + Math.random() * 5;
+
+        particula.style.left = Math.random() * 95 + "vw";
+        particula.style.fontSize = (13 + Math.random() * 14) + "px";
+        particula.style.animationDuration = duracion + "s";
+
+        capa.appendChild(particula);
+
+        particula.addEventListener("animationend", function () {
+            particula.remove();
+        });
+    }
+
+    for (let i = 0; i < 7; i++) {
+        setTimeout(crearParticula, i * 350);
+    }
+
+    setInterval(crearParticula, 850);
+});
+</script>
+
+</body>
+</html>

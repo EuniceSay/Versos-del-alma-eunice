@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Versos del alma</title>
+
+<style>
+:root {
+    color-scheme: light;
+    --sage: #8c9b82;
+    --deep: #71836b;
+    --cream: #f8f5ed;
+    --paper: #fffdf8;
+    --ink: #515747;
+    --muted: #7d8172;
+    --rose: #a6b89a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--ink);
+    background-color: #f8f5ed;
+    background-image: url("img/fondo-versos.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.site {
+    min-height: 100vh;
+    background: transparent;
+}
+
+header {
+    background: rgba(232, 237, 223, 0.90);
+    border-bottom: 1px solid #d6dfcb;
+}
+
+.nav {
+    max-width: 1120px;
+    margin: auto;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.brand {
+    font-size: 1.35rem;
+    letter-spacing: .04em;
+    color: #59664f;
+    white-space: nowrap;
+}
+
+.brand span {
+    color: var(--rose);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: #59664f;
+    text-decoration: none;
+    font: 500 .88rem Arial, sans-serif;
+    padding: 9px 11px;
+    border-radius: 20px;
+    transition: color .3s ease,
+                text-shadow .3s ease,
+                background-color .3s ease;
+}
+
+nav a:hover {
+    background: #d7e1cc;
+    color: #71836b;
+    text-shadow: 0 0 8px rgba(210, 220, 195, .8);
+}
+
+.hero {
+    max-width: 1120px;
+    margin: auto;
+    padding: 72px 24px 66px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 44px;
+    align-items: center;
+}
+
+.eyebrow {
+    font: 700 .75rem Arial, sans-serif;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--sage);
+}
+
+h1 {
+    font-size: clamp(3rem, 7vw, 5.6rem);
+    line-height: .98;
+    font-weight: normal;
+    margin: 18px 0 22px;
+    color: #59664f;
+}
+
+h1 em {
+    color: #a6b89a;
+    font-weight: normal;
+}
+
+.hero p {
+    font-size: 1.12rem;
+    line-height: 1.8;
+    max-width: 550px;
+    color: #7d8172;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 13px 21px;
+    border-radius: 28px;
+    background: var(--deep);
+    color: #fffdf8;
+    text-decoration: none;
+    font: 600 .9rem Arial, sans-serif;
+    transition: transform .3s ease,
+                background-color .3s ease,
+                box-shadow .3s ease;
+}
+
+.cta:hover {
+    background: #59664f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(113, 131, 107, .25);
+}
+
+.art {
+    min-height: 350px;
+    border-radius: 48% 48% 8px 8px;
+    background:
+        radial-gradient(circle at 52% 35%, #fffdf5 0 13%, transparent 13.5%),
+        linear-gradient(155deg, #e8eddf, #b9c9ad 62%, #879c7b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 45px #71836b24;
+    transition: box-shadow .35s ease;
+}
+
+.art:before,
+.art:after {
+    content: '✿';
+    position: absolute;
+    font-size: 8rem;
+    color: #f8f5ed;
+    opacity: .78;
+    transform: rotate(-18deg);
+    pointer-events: none;
+}
+
+.art:before {
+    left: 8%;
+    top: 13%;
+    font-size: 5rem;
+}
+
+.art:after {
+    right: 8%;
+    bottom: 12%;
+    transform: rotate(20deg);
+}
+
+.art:hover {
+    box-shadow: 0 20px 45px rgba(113, 131, 107, .35);
+}
+
+.book {
+    width: 70%;
+    min-height: 225px;
+    background: #fffdf8;
+    color: #59664f;
+    padding: 32px 23px;
+    transform: rotate(-4deg);
+    box-shadow: 0 15px 25px #71836b44;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #d6dfcb;
+    transition: transform .35s ease,
+                box-shadow .35s ease;
+}
+
+.book:hover {
+    transform: rotate(0deg) translateY(-5px);
+    box-shadow: 0 20px 30px rgba(113, 131, 107, .3);
+}
+
+.book small {
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font: .65rem Arial, sans-serif;
+}
+
+.book strong {
+    font-size: 2.2rem;
+    font-weight: normal;
+    margin: 18px 0;
+}
+
+.book span {
+    font-size: .95rem;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+section {
+    padding: 64px 24px;
+}
+
+section:nth-of-type(even) {
+    background: rgba(237, 240, 230, 0.82);
+}
+
+.inner {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.section-head {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.section-head h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: normal;
+    margin: 12px 0;
+    color: #59664f;
+}
+
+.section-head p {
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: #7d8172;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: rgba(255, 253, 248, 0.94);
+    border: 1px solid #e0e5d8;
+    border-radius: 15px;
+    padding: 24px;
+    box-shadow: 0 8px 20px #71836b12;
+    transition: transform .35s ease,
+                box-shadow .35s ease,
+                background-color .35s ease;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 28px rgba(113, 131, 107, .25);
+    background: #fffefb;
+}
+
+.card .symbol {
+    font-size: 1.7rem;
+}
+
+.card h3 {
+    font-size: 1.35rem;
+    font-weight: normal;
+    margin: 13px 0 10px;
+    color: #71836b;
+}
+
+.card p {
+    line-height: 1.75;
+    color: #7d8172;
+}
+
+.poem {
+    white-space: pre-line;
+    font-style: italic;
+    line-height: 1.9 !important;
+    color: #59664f !important;
+}
+
+.author {
+    font: .76rem Arial, sans-serif;
+    color: var(--rose);
+    letter-spacing: .06em;
+}
+
+.quote {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    padding: 15px;
+    transition: transform .35s ease;
+}
+
+.quote:hover {
+    transform: translateY(-4px);
+}
+
+.quote blockquote {
+    margin: 18px 0;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-style: italic;
+    line-height: 1.45;
+    color: #59664f;
+}
+
+.quote p {
+    color: var(--rose);
+}
+
+footer {
+    padding: 30px 24px;
+    text-align: center;
+    background: rgba(89, 102, 79, 0.96);
+    color: #f8f5ed;
+    line-height: 1.8;
+}
+
+footer small {
+    color: #e8eddf;
+}
+
+/* PÉTALOS FLOTANTES */
+#capa-petalos {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999999;
+}
+
+.petalo {
+    position: absolute;
+    top: -40px;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    animation-name: caerPetalo;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes caerPetalo {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: .85;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        background-attachment: scroll;
+        background-position: center top;
+    }
+
+    .nav {
+        flex-direction: column;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 45px;
+    }
+
+    .art {
+        min-height: 270px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 48px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    #capa-petalos {
+        display: none;
+    }
+
+    .card,
+    .art,
+    .book,
+    .quote,
+    nav a,
+    .cta {
+        transition: none;
+    }
+
+    .card:hover,
+    .book:hover,
+    .quote:hover,
+    .cta:hover {
+        transform: none;
+    }
+}
+
+<!-- Música de Inicio -->
+<section class="reproductor-inicio">
+    <p>🎶 Bienvenidos a Versos del alma</p>
+    <h3>Gracias a ti — DannyLux 🤍</h3>
+
+    <iframe
+        width="100%"
+        height="160"
+        src="https://www.youtube.com/embed/?autoplay=1"
+        title="Gracias a ti - DannyLux"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+
+    <p class="dedicatoria-inicio">
+        A veces, una canción dice todo lo que el corazón siente. 🍃
+    </p>
+</section>
+
+</style>
+
+</head>
+
+<body>
+
+<div class="site">
+
+<header>
+    <div class="nav">
+        <div class="brand">Versos <span>del alma</span></div>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="amor.html">Amor</a>
+            <a href="desamor.html">Desamor</a>
+            <a href="autores.html">Autores</a>
+            <a href="frases.html">Frases</a>
+        </nav>
+    </div>
+</header>
+<main>
+
+<section class="hero">
+    <div>
+        <div class="eyebrow">Palabras que nacen del corazón</div>
+
+        <h1>Versos <em>del alma</em></h1>
+
+        <p>
+            Un pequeño rincón para sentir, soñar y encontrar en la poesía
+            aquellas palabras que a veces el corazón no sabe cómo expresar.
+            Aquí cada verso guarda una emoción y cada frase puede convertirse
+            en un recuerdo especial.
+        </p>
+
+        <a class="cta" href="amor.html">Descubrir poemas</a>
+    </div>
+
+    <div class="art">
+        <div class="book">
+            <small>Un espacio para sentir</small>
+            <strong>Versos del alma</strong>
+            <span>“Hay sentimientos que solo la poesía sabe nombrar.”</span>
+        </div>
+    </div>
+</section>
+
+<!-- Música de Inicio -->
+<section class="reproductor-inicio">
+    <p>🎶 Bienvenidos a Versos del alma</p>
+    <h3>Gracias a ti — DannyLux 🤍</h3>
+
+  <iframe
+    width="100%"
+    height="160"
+    src="https://www.youtube.com/embed/C1Wedf6KQ_w?autoplay=1"
+    title="Gracias A Ti - DannyLux"
+    frameborder="0"
+    allow="autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen>
+</iframe>
+
+    <p class="dedicatoria-inicio">
+        A veces, una canción dice todo lo que el corazón siente. 🍃
+    </p>
+</section>
+
+<section>
+    <div class="inner">
+        <div class="section-head">
+            <div class="eyebrow">Explora nuestros versos</div>
+            <h2>Un sentimiento, mil palabras</h2>
+            <p>
+                Cada emoción tiene una forma diferente de expresarse.
+                Encuentra la tuya entre poemas, historias y palabras
+                que llegan al corazón.
+            </p>
+        </div>
+
+        <div class="cards">
+            <article class="card">
+                <div class="symbol">♡</div>
+                <h3>Poemas de amor</h3>
+                <p>
+                    Palabras para expresar cariño, admiración y esa alegría
+                    especial que sentimos cuando alguien nos importa.
+                </p>
+                <a href="amor.html">Leer poemas →</a>
+            </article>
+
+            <article class="card">
+                <div class="symbol">☁</div>
+                <h3>Poemas de desamor</h3>
+                <p>
+                    Versos para los recuerdos, las despedidas y los
+                    sentimientos que también forman parte de nuestra historia.
+                </p>
+                <a href="desamor.html">Descubrir versos →</a>
+            </article>
+
+            <article class="card">
+                <div class="symbol">✧</div>
+                <h3>Autores y frases</h3>
+                <p>
+                    Conoce escritores que dejaron huella con sus palabras
+                    y descubre frases para guardar en el corazón.
+                </p>
+                <a href="autores.html">Conocer autores →</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="inner quote">
+        <div class="eyebrow">Un verso para recordar</div>
+        <blockquote>
+            “La poesía es el lenguaje secreto de aquello que sentimos
+            y no siempre podemos explicar.”
+        </blockquote>
+        <p>— Versos del alma</p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div>2026 Versos del alma - Elaborado por Eunice Say</div>
+    <small>Un espacio donde los sentimientos se convierten en palabras.</small>
+</footer>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+    }
+
+    const simbolos = ["🌸", "🌷", "✿", "❀"];
+    const cantidadMaxima = 18;
+
+    const capa = document.createElement("div");
+    capa.id = "capa-petalos";
+    document.body.appendChild(capa);
+
+    function crearPetalo() {
+        if (capa.childElementCount >= cantidadMaxima) {
+            return;
+        }
+
+        const petalo = document.createElement("span");
+        petalo.className = "petalo";
+        petalo.textContent =
+            simbolos[Math.floor(Math.random() * simbolos.length)];
+
+        const duracion = 8 + Math.random() * 5;
+
+        petalo.style.left = Math.random() * 95 + "vw";
+        petalo.style.fontSize = (14 + Math.random() * 12) + "px";
+        petalo.style.animationDuration = duracion + "s";
+
+        capa.appendChild(petalo);
+
+        petalo.addEventListener("animationend", function () {
+            petalo.remove();
+        });
+    }
+
+    for (let i = 0; i < 8; i++) {
+        setTimeout(crearPetalo, i * 350);
+    }
+
+    setInterval(crearPetalo, 700);
+});
+</script>
+
+</body>
+</html>

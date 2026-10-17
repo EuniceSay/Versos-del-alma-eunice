@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autores | Versos del alma</title>
+
+<style>
+:root {
+    --fondo: #f8f5ed;
+    --papel: rgba(255, 253, 248, 0.94);
+    --verde: #71836b;
+    --verde-claro: #e8eddf;
+    --lavanda: #a7a0ba;
+    --texto: #515747;
+    --gris: #7d8172;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--fondo);
+    background-image: url("img/fondo-versos.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--texto);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ENCABEZADO */
+header {
+    background: rgba(232, 237, 223, 0.91);
+    border-bottom: 1px solid #d6dfcb;
+    backdrop-filter: blur(5px);
+}
+
+.nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    font-size: 1.35rem;
+    color: #59664f;
+    white-space: nowrap;
+}
+
+.brand span {
+    color: var(--lavanda);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav a {
+    color: #59664f;
+    text-decoration: none;
+    font: 500 .88rem Arial, sans-serif;
+    padding: 9px 11px;
+    border-radius: 20px;
+    transition: background .25s ease, transform .25s ease;
+}
+
+nav a:hover,
+nav a.activo {
+    background: #d7e1cc;
+}
+
+nav a:hover {
+    transform: translateY(-2px);
+}
+
+/* PORTADA */
+.hero {
+    text-align: center;
+    padding: 78px 24px;
+    background: linear-gradient(
+        135deg,
+        rgba(232, 237, 223, 0.83),
+        rgba(248, 245, 237, 0.77),
+        rgba(233, 229, 240, 0.83)
+    );
+}
+
+.etiqueta {
+    color: var(--verde);
+    font: 700 .75rem Arial, sans-serif;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+}
+
+h1 {
+    color: #59664f;
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+h1 em {
+    color: var(--lavanda);
+    font-weight: normal;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: var(--gris);
+    font-size: 1.1rem;
+    line-height: 1.9;
+}
+
+/* SECCIONES */
+section {
+    padding: 60px 24px;
+    background: transparent;
+}
+
+.contenedor {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.titulo h2 {
+    color: var(--verde);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: normal;
+    margin: 12px 0;
+}
+
+.titulo p {
+    max-width: 700px;
+    margin: auto;
+    color: var(--gris);
+    line-height: 1.8;
+}
+
+/* TARJETAS DE AUTORES */
+.autores {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.autor {
+    background: var(--papel);
+    border: 1px solid rgba(224, 229, 216, 0.95);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 22px rgba(81, 87, 71, 0.10);
+    transition: transform .3s ease, box-shadow .3s ease,
+                border-color .3s ease;
+}
+
+.autor:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(81, 87, 71, 0.18);
+    border-color: rgba(167, 160, 186, 0.65);
+}
+
+/* NÚMEROS DECORATIVOS */
+.numero {
+    color: var(--lavanda);
+    font-size: 2rem;
+    display: inline-block;
+    transition: transform .3s ease, color .3s ease;
+}
+
+.autor:hover .numero {
+    transform: scale(1.15);
+    color: var(--verde);
+}
+
+.autor h3 {
+    color: var(--verde);
+    font-size: 1.7rem;
+    font-weight: normal;
+    margin: 10px 0;
+    transition: color .3s ease;
+}
+
+.autor:hover h3 {
+    color: #81799f;
+}
+
+.pais {
+    color: var(--lavanda);
+    font: 700 .75rem Arial, sans-serif;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.autor p {
+    color: var(--gris);
+    line-height: 1.8;
+}
+
+.autor h4 {
+    color: var(--verde);
+    font-size: 1rem;
+    margin: 20px 0 8px;
+}
+
+.obras {
+    padding-left: 20px;
+    color: var(--gris);
+    line-height: 1.9;
+}
+
+.obras li {
+    padding-left: 3px;
+    transition: color .2s ease, transform .2s ease;
+}
+
+.obras li:hover {
+    color: var(--verde);
+    transform: translateX(4px);
+}
+
+/* ENLACES */
+.enlace {
+    display: inline-block;
+    margin-top: 12px;
+    color: #73708d;
+    text-decoration: none;
+    border-bottom: 1px solid #c8c1d8;
+    padding-bottom: 4px;
+    font: .88rem Arial, sans-serif;
+    transition: color .25s ease, border-color .25s ease,
+                transform .25s ease;
+}
+
+.enlace:hover {
+    color: var(--verde);
+    border-color: var(--verde);
+    transform: translateX(4px);
+}
+
+/* CITA FINAL */
+.cita {
+    background: rgba(232, 237, 223, 0.84);
+    text-align: center;
+}
+
+.cita blockquote {
+    max-width: 760px;
+    margin: 25px auto;
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    line-height: 1.6;
+    color: #59664f;
+    font-style: italic;
+    transition: transform .3s ease, color .3s ease;
+}
+
+.cita blockquote:hover {
+    transform: scale(1.02);
+    color: #81799f;
+}
+
+.cita p {
+    color: var(--gris);
+    line-height: 1.8;
+    max-width: 750px;
+    margin: auto;
+}
+
+/* PIE DE PÁGINA */
+footer {
+    padding: 28px 20px;
+    text-align: center;
+    background: rgba(89, 102, 79, 0.96);
+    color: #f8f5ed;
+    line-height: 1.8;
+}
+
+footer small {
+    color: #e8eddf;
+}
+
+/* PÉTALOS Y DESTELLOS */
+#capa-decorativa {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999999;
+}
+
+.particula-autor {
+    position: absolute;
+    top: -35px;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    animation: caerDecoracion linear forwards;
+}
+
+@keyframes caerDecoracion {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* DISEÑO PARA CELULARES */
+@media (max-width: 760px) {
+    body {
+        background-attachment: scroll;
+        background-position: center top;
+    }
+
+    .nav {
+        flex-direction: column;
+    }
+
+    .hero {
+        padding: 55px 20px;
+    }
+
+    .autores {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 45px 18px;
+    }
+
+    .autor {
+        padding: 23px;
+    }
+}
+
+/* RESPETAR LAS PREFERENCIAS DE MOVIMIENTO */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    #capa-decorativa {
+        display: none;
+    }
+
+    .autor,
+    .numero,
+    .autor h3,
+    .obras li,
+    .enlace,
+    nav a,
+    .cita blockquote {
+        transition: none;
+    }
+
+    .autor:hover,
+    .autor:hover .numero,
+    .obras li:hover,
+    .enlace:hover,
+    nav a:hover,
+    .cita blockquote:hover {
+        transform: none;
+    }
+}
+
+/* Reproductor musical de Autores */
+.reproductor-autores {
+    max-width: 520px;
+    margin: 35px auto;
+    padding: 22px;
+    text-align: center;
+    background: rgba(232, 237, 224, 0.90);
+    border: 1px solid #c4d0bb;
+    border-radius: 22px;
+    box-shadow: 0 5px 18px rgba(80, 100, 75, 0.12);
+}
+
+.reproductor-autores h3 {
+    color: #62765b;
+    margin: 10px 0 18px;
+}
+
+.reproductor-autores iframe {
+    display: block;
+    border: none;
+    border-radius: 12px;
+}
+
+.dedicatoria-autores {
+    color: #76658b;
+    font-style: italic;
+    line-height: 1.7;
+    margin-top: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <div class="brand">❧ Versos <span>del alma</span></div>
+
+        <nav aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="amor.html">Amor</a>
+            <a href="desamor.html">Desamor</a>
+            <a href="autores.html" class="activo">Autores</a>
+            <a href="frases.html">Frases</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- PORTADA -->
+    <div class="hero">
+        <div class="etiqueta">Las voces detrás de los versos</div>
+
+        <h1>Grandes <em>poetas</em></h1>
+
+        <p>
+            Detrás de cada poema existe una persona que encontró
+            en las palabras una forma de expresar lo que sentía.
+            Conoce a algunos de los escritores que han dejado
+            una huella importante en la literatura y que siguen
+            inspirando a lectores de todo el mundo.
+        </p>
+    </div>
+
+    <!-- Música de la página Autores -->
+<section class="reproductor-autores">
+    <p>🎶 Una melodía entre versos</p>
+    <h3>Bésame mucho — Los Panchos 💗</h3>
+
+    
+<iframe
+    width="100%"
+    height="160"
+    src="https://www.youtube.com/embed/pwRiKDcrjz0"
+    title="Bésame mucho - Los Panchos"
+    frameborder="0"
+    allow="autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen>
+</iframe>
+
+    <p class="dedicatoria-autores">
+        Hay canciones que parecen poemas y poemas que suenan a canciones. 🌿
+    </p>
+</section>
+
+    <!-- AUTORES -->
+    <section>
+        <div class="contenedor">
+
+            <div class="titulo">
+                <div class="etiqueta">Historias y palabras</div>
+                <h2>Conoce a los autores</h2>
+
+                <p>
+                    Cinco poetas reconocidos por sus obras,
+                    sus sentimientos y su manera de mirar el mundo.
+                </p>
+            </div>
+
+            <div class="autores">
+
+                <article class="autor">
+                    <div class="numero">01</div>
+                    <div class="pais">Chile</div>
+                    <h3>Pablo Neruda</h3>
+
+                    <p>
+                        Pablo Neruda fue un poeta chileno nacido
+                        en 1904. Es conocido por escribir sobre
+                        el amor, la naturaleza, la vida y los
+                        sentimientos humanos. Sus poemas se
+                        caracterizan por utilizar imágenes
+                        expresivas y transmitir emociones profundas.
+                    </p>
+
+                    <h4>Obras destacadas</h4>
+                    <ul class="obras">
+                        <li>Veinte poemas de amor y una canción desesperada</li>
+                        <li>Crepusculario</li>
+                        <li>Odas elementales</li>
+                    </ul>
+
+                    <a class="enlace"
+                       href="https://fundacionneruda.org/biografia-pablo-neruda/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                       Conocer su biografía ↗
+                    </a>
+                </article>
+
+                <article class="autor">
+                    <div class="numero">02</div>
+                    <div class="pais">Chile</div>
+                    <h3>Gabriela Mistral</h3>
+
+                    <p>
+                        Gabriela Mistral fue una poeta, maestra
+                        y escritora chilena, nacida en 1889.
+                        Sus poemas hablan del amor, la infancia,
+                        la naturaleza, el dolor y la vida.
+                        En 1945 recibió el Premio Nobel de Literatura.
+                    </p>
+
+                    <h4>Obras destacadas</h4>
+                    <ul class="obras">
+                        <li>Desolación</li>
+                        <li>Tala</li>
+                        <li>Lecturas para mujeres</li>
+                    </ul>
+
+                    <a class="enlace"
+                       href="https://www.cervantes.es/bibliotecas_documentacion_espanol/creadores/mistral_gabriela.htm"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                       Conocer su biografía ↗
+                    </a>
+                </article>
+
+                <article class="autor">
+                    <div class="numero">03</div>
+                    <div class="pais">España</div>
+                    <h3>Federico García Lorca</h3>
+
+                    <p>
+                        Federico García Lorca fue un poeta y
+                        dramaturgo español nacido en 1898.
+                        Su obra combina sentimientos, naturaleza,
+                        tradiciones y símbolos. También escribió
+                        obras de teatro que siguen siendo
+                        importantes en la literatura.
+                    </p>
+
+                    <h4>Obras destacadas</h4>
+                    <ul class="obras">
+                        <li>Romancero gitano</li>
+                        <li>Poeta en Nueva York</li>
+                        <li>La casa de Bernarda Alba</li>
+                    </ul>
+
+                    <a class="enlace"
+                       href="https://www.cervantesvirtual.com/portales/federico_garcia_lorca/biografia/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                       Conocer su biografía ↗
+                    </a>
+                </article>
+
+                <article class="autor">
+                    <div class="numero">04</div>
+                    <div class="pais">España</div>
+                    <h3>Gustavo Adolfo Bécquer</h3>
+
+                    <p>
+                        Gustavo Adolfo Bécquer fue un poeta
+                        y narrador español nacido en 1836.
+                        Es reconocido por sus poemas sobre el
+                        amor, la esperanza, la tristeza y los
+                        sentimientos que muchas veces son difíciles
+                        de explicar.
+                    </p>
+
+                    <h4>Obras destacadas</h4>
+                    <ul class="obras">
+                        <li>Rimas</li>
+                        <li>Leyendas</li>
+                        <li>Cartas literarias a una mujer</li>
+                    </ul>
+
+                    <a class="enlace"
+                       href="https://www.cervantesvirtual.com/portales/gustavo_adolfo_becquer/autor_biografia/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                       Conocer su biografía ↗
+                    </a>
+                </article>
+
+                <article class="autor">
+                    <div class="numero">05</div>
+                    <div class="pais">Uruguay</div>
+                    <h3>Mario Benedetti</h3>
+
+                    <p>
+                        Mario Benedetti fue un escritor y poeta
+                        uruguayo nacido en 1920. Sus escritos hablan
+                        del amor, la nostalgia, la esperanza y las
+                        experiencias de la vida cotidiana. Se destacó
+                        por expresar sentimientos profundos con un
+                        lenguaje sencillo y cercano a los lectores.
+                    </p>
+
+                    <h4>Obras destacadas</h4>
+                    <ul class="obras">
+                        <li>La tregua</li>
+                        <li>Poemas de la oficina</li>
+                        <li>Inventario</li>
+                    </ul>
+
+                    <a class="enlace"
+                       href="https://www.cervantes.es/bibliotecas_documentacion_espanol/creadores/benedetti_mario.htm"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                       Conocer su biografía ↗
+                    </a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="cita">
+        <div class="contenedor">
+
+            <div class="etiqueta">La magia de la literatura</div>
+
+            <blockquote>
+                “Cada poeta encuentra una manera distinta
+                de convertir sus sentimientos en palabras.”
+            </blockquote>
+
+            <p>
+                Leer poesía nos permite conocer otras formas
+                de pensar, descubrir nuevas emociones y encontrar
+                versos que parecen hablar directamente de nuestra vida.
+            </p>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <strong>2026 Versos del alma - Elaborado por Eunice Say</strong>
+    <br>
+    <small>Un homenaje a quienes hicieron de las palabras un arte.</small>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+    }
+
+    const simbolos = ["🌸", "✧", "🍃", "✦"];
+    const cantidadMaxima = 16;
+
+    const capa = document.createElement("div");
+    capa.id = "capa-decorativa";
+    document.body.appendChild(capa);
+
+    function crearParticula() {
+        if (capa.childElementCount >= cantidadMaxima) {
+            return;
+        }
+
+        const particula = document.createElement("span");
+        particula.className = "particula-autor";
+        particula.textContent =
+            simbolos[Math.floor(Math.random() * simbolos.length)];
+
+        const duracion = 8 + Math.random() * 5;
+
+        particula.style.left = Math.random() * 95 + "vw";
+        particula.style.fontSize = (13 + Math.random() * 12) + "px";
+        particula.style.animationDuration = duracion + "s";
+
+        capa.appendChild(particula);
+
+        particula.addEventListener("animationend", function () {
+            particula.remove();
+        });
+    }
+
+    for (let i = 0; i < 7; i++) {
+        setTimeout(crearParticula, i * 350);
+    }
+
+    setInterval(crearParticula, 850);
+});
+</script>
+
+</body>
+</html>

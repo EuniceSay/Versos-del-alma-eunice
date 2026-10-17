@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amor | Versos del alma</title>
+
+<style>
+:root {
+    --fondo: #f8f5ed;
+    --crema: rgba(255, 253, 248, 0.93);
+    --verde: #71836b;
+    --verde-claro: rgba(232, 237, 223, 0.88);
+    --lavanda: #a6a0c1;
+    --texto: #515747;
+    --suave: #6f7567;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--texto);
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: #f8f5ed;
+    background-image: url("img/fondo-versos.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    background: rgba(232, 237, 223, 0.90);
+    border-bottom: 1px solid #d6dfcb;
+}
+
+.nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.brand {
+    font-size: 1.4rem;
+    color: var(--verde);
+}
+
+.brand span {
+    color: var(--lavanda);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+nav a {
+    color: var(--verde);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: .9rem;
+    padding: 9px 12px;
+    border-radius: 20px;
+    transition: background .3s ease,
+                color .3s ease,
+                text-shadow .3s ease;
+}
+
+nav a:hover,
+nav a.activo {
+    background: #d7e1cc;
+}
+
+nav a:hover {
+    color: #59664f;
+    text-shadow: 0 0 8px rgba(210, 220, 195, .8);
+}
+
+.hero {
+    text-align: center;
+    padding: 85px 20px 75px;
+    background: linear-gradient(
+        135deg,
+        rgba(237, 240, 230, 0.78),
+        rgba(248, 245, 237, 0.72),
+        rgba(233, 229, 240, 0.78)
+    );
+}
+
+.etiqueta {
+    color: var(--verde);
+    font-family: Arial, sans-serif;
+    font-size: .75rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+h1 {
+    color: var(--verde);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+h1 em {
+    color: #9690b1;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--suave);
+    font-size: 1.1rem;
+    line-height: 1.9;
+}
+
+.decoracion {
+    margin-top: 30px;
+    font-size: 2rem;
+    color: #9690b1;
+    letter-spacing: 10px;
+}
+
+section {
+    padding: 65px 24px;
+    background: transparent;
+}
+
+.contenedor {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.titulo h2 {
+    color: var(--verde);
+    font-size: 2.5rem;
+    font-weight: normal;
+    margin: 12px 0;
+}
+
+.titulo p {
+    color: var(--suave);
+    line-height: 1.8;
+    max-width: 700px;
+    margin: auto;
+}
+
+.poemas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.poema {
+    background: var(--crema);
+    border: 1px solid rgba(225, 229, 217, 0.95);
+    border-radius: 15px;
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(81, 87, 71, 0.12);
+    transition: transform .35s ease,
+                box-shadow .35s ease;
+}
+
+.poema:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 30px rgba(113, 131, 107, 0.25);
+}
+
+.simbolo {
+    font-size: 2rem;
+    color: #9690b1;
+}
+
+.poema h3 {
+    color: var(--verde);
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: 18px 0;
+}
+
+.versos {
+    white-space: pre-line;
+    line-height: 2;
+    font-style: italic;
+    color: var(--suave);
+    font-size: 1rem;
+}
+
+.autoria {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: .82rem;
+    color: var(--verde);
+}
+
+.dedicatoria {
+    background: rgba(232, 237, 223, 0.86);
+    text-align: center;
+}
+
+.dedicatoria blockquote {
+    max-width: 800px;
+    margin: 30px auto;
+    color: var(--verde);
+    font-size: clamp(1.7rem, 4vw, 2.7rem);
+    font-style: italic;
+    line-height: 1.6;
+    transition: transform .35s ease;
+}
+
+.dedicatoria blockquote:hover {
+    transform: translateY(-4px);
+}
+
+.dedicatoria p {
+    color: var(--suave);
+    line-height: 1.8;
+}
+
+.firma {
+    color: var(--verde);
+    font-style: italic;
+    margin-top: -12px;
+}
+
+.frases {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.frase {
+    background: var(--crema);
+    border-left: 4px solid var(--lavanda);
+    border-radius: 8px;
+    padding: 22px;
+    line-height: 1.8;
+    color: var(--texto);
+    font-style: italic;
+    box-shadow: 0 5px 18px rgba(81, 87, 71, 0.08);
+    transition: transform .35s ease,
+                box-shadow .35s ease;
+}
+
+.frase:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(113, 131, 107, 0.2);
+}
+
+.frase p {
+    font-family: Arial, sans-serif;
+    font-size: .82rem;
+    color: var(--verde);
+    font-style: normal;
+    margin-bottom: 0;
+}
+
+footer {
+    padding: 28px 20px;
+    text-align: center;
+    background: rgba(89, 102, 79, 0.96);
+    color: var(--fondo);
+    line-height: 1.8;
+}
+
+footer small {
+    color: #e8eddf;
+}
+
+/* CORAZONCITOS FLOTANTES */
+#capa-corazones {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999999;
+}
+
+.corazon-flotante {
+    position: absolute;
+    top: -40px;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    animation-name: caerCorazon;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes caerCorazon {
+    0% {
+        transform: translateY(0) rotate(-15deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: .8;
+    }
+    100% {
+        transform: translateY(110vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        background-attachment: scroll;
+        background-position: center top;
+    }
+
+    .nav {
+        flex-direction: column;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .poemas,
+    .frases {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 48px 18px;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    #capa-corazones {
+        display: none;
+    }
+
+    .poema,
+    .frase,
+    .dedicatoria blockquote,
+    nav a {
+        transition: none;
+    }
+
+    .poema:hover,
+    .frase:hover,
+    .dedicatoria blockquote:hover {
+        transform: none;
+    }
+}
+/* Sorpresa romántica */
+.sorpresa-amor {
+    max-width: 650px;
+    margin: 45px auto;
+    padding: 30px 22px;
+    text-align: center;
+    background: rgba(232, 237, 224, 0.90);
+    border: 1px solid #c4d0bb;
+    border-radius: 22px;
+    box-shadow: 0 5px 18px rgba(80, 100, 75, 0.12);
+}
+
+.sorpresa-amor h2 {
+    color: #62765b;
+    margin-bottom: 12px;
+}
+
+.sorpresa-amor p {
+    color: #6f7168;
+    line-height: 1.7;
+}
+
+.boton-amor {
+    background: #8da486;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 13px 24px;
+    margin-top: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.boton-amor:hover {
+    background: #748c6c;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px #aab9a3;
+}
+
+#mensajeAmor {
+    margin-top: 22px;
+    color: #76658b;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.firma-amor {
+    color: #8da486;
+    font-style: italic;
+    margin-top: 15px;
+}
+
+@keyframes aparecerAmor {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reproductor-amor {
+    max-width: 520px;
+    margin: 35px auto;
+    padding: 22px;
+    text-align: center;
+    background: rgba(232, 237, 224, 0.90);
+    border: 1px solid #c4d0bb;
+    border-radius: 22px;
+    box-shadow: 0 5px 18px rgba(80, 100, 75, 0.12);
+}
+
+.reproductor-amor h3 {
+    color: #62765b;
+    margin: 10px 0 18px;
+}
+
+.reproductor-amor iframe {
+    display: block;
+    border: none;
+    border-radius: 12px;
+}
+
+.dedicatoria-musical {
+    color: #76658b;
+    font-style: italic;
+    margin-top: 16px;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <div class="brand">❧ Versos <span>del alma</span></div>
+
+        <nav aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="amor.html" class="activo">Amor</a>
+            <a href="desamor.html">Desamor</a>
+            <a href="autores.html">Autores</a>
+            <a href="frases.html">Frases</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <div class="hero">
+        <div class="etiqueta">Sentimientos hechos poesía</div>
+
+        <h1>El amor en <em>versos</em></h1>
+
+        <p>
+            Amar es encontrar belleza en los pequeños detalles,
+            sentir paz en una mirada y descubrir que una persona
+            puede convertirse en uno de nuestros lugares favoritos.
+            En estas páginas, las palabras se convierten en una forma
+            de decir aquello que el corazón guarda en silencio.
+        </p>
+
+        <div class="decoracion">✧ ❧ ✧</div>
+    </div>
+
+    <section>
+        <div class="contenedor">
+
+            <div class="titulo">
+                <div class="etiqueta">Palabras del corazón</div>
+                <h2>Poemas de amor</h2>
+                <p>
+                    Tres pequeños poemas originales para expresar el cariño,
+                    la admiración y la magia de amar.
+                </p>
+            </div>
+
+<!-- Música de la página Amor -->
+<section class="reproductor-amor">
+    <p>🎶 Nuestra canción de amor</p>
+    <h3>Contigo — Los Panchos 💗</h3>
+
+    <iframe
+        width="100%"
+        height="160"
+        src="https://www.youtube.com/embed/jhx3hYS__JI?autoplay=1&enablejsapi=1"
+        title="Contigo - Los Panchos"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+    </iframe>
+
+    <p class="dedicatoria-musical">
+        Una melodía para acompañar los versos del corazón. 🌷
+    </p>
+</section>
+
+            <div class="poemas">
+
+                <article class="poema">
+                    <div class="simbolo">❀</div>
+                    <h3>Tu existencia</h3>
+
+                    <p class="versos">No sé qué tiene tu sonrisa,
+que hace más bonito el día,
+pero desde que tú llegaste,
+hay más luz en mi vida.
+
+No necesito mil estrellas
+ni promesas bajo el cielo,
+si puedo encontrar en tus ojos
+un pequeño universo.</p>
+
+                    <p class="autoria">Autora: Eunice Say</p>
+                </article>
+
+                <article class="poema">
+                    <div class="simbolo">✧</div>
+                    <h3>Elegirte</h3>
+
+                    <p class="versos">Te elegiría en días grises,
+en las tardes de verano,
+en los silencios más tranquilos
+y al caminar de tu mano.
+
+Porque amar no es solo un instante
+ni palabras al pasar,
+es cuidar de lo bonito
+y aprender a acompañar.</p>
+
+                    <p class="autoria">Autora: Eunice Say</p>
+                </article>
+
+                <article class="poema">
+                    <div class="simbolo">❦</div>
+                    <h3>Mi lugar favorito</h3>
+
+                    <p class="versos">Mi lugar favorito
+no aparece en ningún mapa,
+es ese pequeño momento
+cuando tu risa me abraza.
+
+Y si el mundo se hace enorme
+y no sé dónde estar,
+me basta un poco de tu calma
+para volver a encontrarme.</p>
+
+                    <p class="autoria">Autora: Eunice Say</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="dedicatoria">
+        <div class="contenedor">
+
+            <div class="etiqueta">Una dedicatoria especial</div>
+
+            <blockquote>
+                “Amarte es descubrir que mi poema favorito
+                no está escrito en un libro, sino en cada
+                momento que comparto contigo.”
+            </blockquote>
+
+            <blockquote>
+                “Le contaré una historia bonita y linda,
+                pero primero vamos a vivirla.”
+            </blockquote>
+
+            <p class="firma">Con Cariño, Eunice Say</p>
+
+            <p>
+                Porque a veces el amor no necesita grandes regalos,
+                sino tiempo, sinceridad, respeto y pequeños detalles
+                que demuestren lo que sentimos.
+            </p>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="contenedor">
+
+            <div class="titulo">
+                <div class="etiqueta">Para dedicar o recordar</div>
+                <h2>Frases que enamoran</h2>
+            </div>
+
+            <div class="frases">
+                <div class="frase">
+                    “Hay personas que llegan a nuestra vida
+                    y convierten lo cotidiano en algo extraordinario.”
+                    <p>Autora: Eunice Say</p>
+                </div>
+
+                <div class="frase">
+                    “No quiero un amor perfecto, quiero uno sincero,
+                    de esos que se construyen día a día.”
+                    <p>Autora: Eunice Say</p>
+                </div>
+
+                <div class="frase">
+                    “Si pudiera guardar un instante para siempre,
+                    elegiría uno en el que estés sonriendo.”
+                    <p>Autora: Eunice Say</p>
+                </div>
+
+                <div class="frase">
+                    “El amor más bonito también se encuentra
+                    en el respeto, la confianza y la tranquilidad.”
+                    <p>Autora: Eunice Say</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+    <section class="sorpresa-amor">
+    <h2>💌 Un mensaje para tu corazón</h2>
+
+    <p>
+        Cada corazón guarda palabras que a veces no sabe cómo decir.
+        Presiona el botón y descubre una sorpresa. 🌷
+    </p>
+
+    <button class="boton-amor" onclick="mostrarMensajeAmor()">
+        Descubrir mi mensaje 💗
+    </button>
+
+    <div id="mensajeAmor" aria-live="polite">
+        Hay una pequeña sorpresa esperándote...
+    </div>
+
+    <p class="firma-amor">
+        Con cariño, Eunice Say 💌
+</section>
+
+<footer>
+    <strong>2026 Versos del alma - Elaborado por Eunice Say</strong>
+    <br>
+    <small>Palabras que sienten, versos que permanecen.</small>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+    }
+
+    const simbolos = ["♡", "♥", "💕", "🤍"];
+    const cantidadMaxima = 16;
+
+    const capa = document.createElement("div");
+    capa.id = "capa-corazones";
+    document.body.appendChild(capa);
+
+    function crearCorazon() {
+        if (capa.childElementCount >= cantidadMaxima) {
+            return;
+        }
+
+        const corazon = document.createElement("span");
+        corazon.className = "corazon-flotante";
+        corazon.textContent =
+            simbolos[Math.floor(Math.random() * simbolos.length)];
+
+        const duracion = 8 + Math.random() * 5;
+
+        corazon.style.left = Math.random() * 95 + "vw";
+        corazon.style.fontSize = (14 + Math.random() * 14) + "px";
+        corazon.style.animationDuration = duracion + "s";
+
+        capa.appendChild(corazon);
+
+        corazon.addEventListener("animationend", function () {
+            corazon.remove();
+        });
+    }
+
+    for (let i = 0; i < 7; i++) {
+        setTimeout(crearCorazon, i * 350);
+    }
+
+    setInterval(crearCorazon, 850);
+});
+
+const mensajesDeAmor = [
+    "Si fueras un poema, te leería una y mil veces sin cansarme. 💗",
+    "Qué bonito coincidir con alguien que hace florecer el alma. 🌸"
+    
+];
+
+function mostrarMensajeAmor() {
+    const mensaje = mensajesDeAmor[
+        Math.floor(Math.random() * mensajesDeAmor.length)
+    ];
+
+    const espacio = document.getElementById("mensajeAmor");
+    espacio.textContent = "“" + mensaje + "”";
+    espacio.style.animation = "none";
+    void espacio.offsetWidth;
+    espacio.style.animation = "aparecerAmor 0.6s ease";
+}
+
+</script>
+
+</body>
+</html>

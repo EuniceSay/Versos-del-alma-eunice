@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desamor | Versos del alma</title>
+
+<style>
+:root {
+    --fondo: #f3f1f3;
+    --papel: rgba(255, 253, 251, 0.93);
+    --verde: #667365;
+    --verde-claro: rgba(226, 231, 223, 0.88);
+    --lavanda: #a7a0ba;
+    --lavanda-claro: rgba(231, 227, 237, 0.86);
+    --gris: #696974;
+    --texto: #4f5150;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--fondo);
+    background-image: url("img/fondo-versos.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--texto);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* ENCABEZADO Y NAVEGACIÓN */
+header {
+    background: rgba(226, 231, 223, 0.90);
+    border-bottom: 1px solid #d1d8ce;
+}
+
+.nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.brand {
+    font-size: 1.35rem;
+    letter-spacing: .04em;
+    color: var(--verde);
+    white-space: nowrap;
+}
+
+.brand span {
+    color: var(--lavanda);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav a {
+    color: var(--verde);
+    text-decoration: none;
+    font: 500 .88rem Arial, sans-serif;
+    padding: 9px 11px;
+    border-radius: 20px;
+    transition: background .25s ease, transform .25s ease;
+}
+
+nav a:hover,
+nav a.activo {
+    background: #d1d9ce;
+}
+
+nav a:hover {
+    transform: translateY(-2px);
+}
+
+/* PORTADA */
+.hero {
+    text-align: center;
+    padding: 85px 24px 75px;
+    background: linear-gradient(
+        135deg,
+        rgba(227, 231, 224, 0.78),
+        rgba(243, 241, 243, 0.72),
+        rgba(229, 224, 235, 0.78)
+    );
+}
+
+.etiqueta {
+    font: 700 .75rem Arial, sans-serif;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gris);
+}
+
+h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: normal;
+    margin: 20px 0;
+    color: var(--verde);
+}
+
+h1 em {
+    color: var(--lavanda);
+    font-weight: normal;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--gris);
+}
+
+.decoracion {
+    margin-top: 30px;
+    font-size: 2rem;
+    color: var(--lavanda);
+    letter-spacing: 12px;
+}
+
+/* SECCIONES */
+section {
+    padding: 65px 24px;
+    background: transparent;
+}
+
+.contenedor {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.titulo h2 {
+    color: var(--verde);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: normal;
+    margin: 12px 0;
+}
+
+.titulo p {
+    max-width: 680px;
+    margin: auto;
+    color: var(--gris);
+    line-height: 1.8;
+}
+
+/* TARJETAS DE POEMAS */
+.poemas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.poema {
+    background: var(--papel);
+    border: 1px solid rgba(226, 223, 229, 0.95);
+    border-radius: 14px;
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(73, 64, 82, 0.10);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.poema:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(73, 64, 82, 0.20);
+}
+
+.simbolo {
+    font-size: 2rem;
+    color: var(--lavanda);
+    transition: transform .3s ease;
+}
+
+.poema:hover .simbolo {
+    transform: scale(1.15) rotate(8deg);
+}
+
+.poema h3 {
+    color: var(--verde);
+    font-size: 1.45rem;
+    font-weight: normal;
+    margin: 18px 0;
+}
+
+.versos {
+    white-space: pre-line;
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 2;
+    color: var(--gris);
+}
+
+.autoria {
+    margin-top: 20px;
+    font: .82rem Arial, sans-serif;
+    color: var(--verde);
+}
+
+/* REFLEXIÓN */
+.reflexion {
+    background: var(--lavanda-claro);
+    text-align: center;
+}
+
+.reflexion blockquote {
+    max-width: 800px;
+    margin: 28px auto;
+    color: #666078;
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    font-style: italic;
+    line-height: 1.55;
+    transition: transform .3s ease, color .3s ease;
+}
+
+.reflexion blockquote:hover {
+    transform: scale(1.02);
+    color: var(--verde);
+}
+
+.firma {
+    color: #777087;
+    font-style: italic;
+    margin-top: -12px;
+}
+
+.reflexion p {
+    max-width: 700px;
+    margin: auto;
+    color: var(--gris);
+    line-height: 1.9;
+}
+
+/* FRASES */
+.frases {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.frase {
+    padding: 23px;
+    background: var(--papel);
+    border-left: 4px solid var(--lavanda);
+    border-radius: 8px;
+    color: var(--gris);
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.8;
+    box-shadow: 0 5px 18px rgba(73, 64, 82, 0.08);
+    transition: transform .3s ease, box-shadow .3s ease,
+                background-color .3s ease;
+}
+
+.frase:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 26px rgba(73, 64, 82, 0.16);
+    background-color: rgba(255, 255, 255, 0.98);
+}
+
+.frase p {
+    margin-bottom: 0;
+    color: var(--verde);
+    font: .82rem Arial, sans-serif;
+    font-style: normal;
+}
+
+/* CIERRE */
+.final {
+    text-align: center;
+    background: rgba(228, 232, 225, 0.86);
+}
+
+.final h2 {
+    color: var(--verde);
+    font-weight: normal;
+    font-size: 2.2rem;
+}
+
+.final p {
+    max-width: 680px;
+    margin: auto;
+    color: var(--gris);
+    line-height: 1.9;
+}
+
+/* PIE DE PÁGINA */
+footer {
+    padding: 28px 20px;
+    text-align: center;
+    background: rgba(89, 100, 87, 0.96);
+    color: #f3f1f3;
+    line-height: 1.8;
+}
+
+footer small {
+    color: #dfe3dc;
+}
+
+/* DESTELLOS DELICADOS */
+#capa-destellos {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999999;
+}
+
+.destello-flotante {
+    position: absolute;
+    top: -30px;
+    display: block;
+    color: #d8c5f0;
+    text-shadow: 0 0 8px #ffffff;
+    pointer-events: none;
+    user-select: none;
+    animation: caerDestello linear forwards;
+}
+
+@keyframes caerDestello {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.7);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translateY(50vh) rotate(180deg) scale(1.2);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg) scale(0.6);
+        opacity: 0;
+    }
+}
+
+/* ADAPTACIÓN A CELULARES */
+@media (max-width: 760px) {
+    body {
+        background-attachment: scroll;
+        background-position: center top;
+    }
+
+    .nav {
+        flex-direction: column;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .poemas,
+    .frases {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 48px 18px;
+    }
+}
+
+/* RESPETAR PREFERENCIAS DE MOVIMIENTO */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    #capa-destellos {
+        display: none;
+    }
+
+    .poema,
+    .frase,
+    .reflexion blockquote,
+    nav a,
+    .simbolo {
+        transition: none;
+    }
+
+    .poema:hover,
+    .frase:hover,
+    .reflexion blockquote:hover,
+    nav a:hover,
+    .poema:hover .simbolo {
+        transform: none;
+    }
+}
+/* Reproductor musical de Desamor */
+.reproductor-desamor {
+    max-width: 520px;
+    margin: 35px auto;
+    padding: 22px;
+    text-align: center;
+    background: rgba(232, 237, 224, 0.90);
+    border: 1px solid #c4d0bb;
+    border-radius: 22px;
+    box-shadow: 0 5px 18px rgba(80, 100, 75, 0.12);
+}
+
+.reproductor-desamor h3 {
+    color: #76658b;
+    margin: 10px 0 18px;
+}
+
+.reproductor-desamor iframe {
+    display: block;
+    border: none;
+    border-radius: 12px;
+}
+
+.dedicatoria-desamor {
+    color: #6f7168;
+    font-style: italic;
+    line-height: 1.7;
+    margin-top: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <div class="brand">❧ Versos <span>del alma</span></div>
+
+        <nav aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="amor.html">Amor</a>
+            <a href="desamor.html" class="activo">Desamor</a>
+            <a href="autores.html">Autores</a>
+            <a href="frases.html">Frases</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- PORTADA -->
+    <div class="hero">
+        <div class="etiqueta">Cuando el corazón aprende a soltar</div>
+
+        <h1>Lo que quedó<br>del <em>amor</em></h1>
+
+        <p>
+            Hay despedidas que dejan palabras sin decir,
+            recuerdos que regresan sin avisar y sentimientos
+            que tardan en encontrar su lugar. El desamor también
+            merece ser contado, porque incluso de las historias
+            que terminan podemos aprender algo sobre nosotros.
+        </p>
+
+        <div class="decoracion">✧ ❧ ✧</div>
+    </div>
+
+    <!-- Música de la página Desamor -->
+<section class="reproductor-desamor">
+    <p>🎶 Una canción para el corazón</p>
+    <h3>Rosas — La Oreja de Van Gogh 🥀</h3>
+
+    <iframe
+        width="100%"
+        height="160"
+        src="https://www.youtube.com/embed/nYnLVWXmRm8?autoplay=1"
+        title="Rosas - La Oreja de Van Gogh"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+    </iframe>
+
+    <p class="dedicatoria-desamor">
+        Hay recuerdos que florecen incluso después de decir adiós. 🌹
+    </p>
+</section>
+
+    <!-- POEMAS -->
+    <section>
+        <div class="contenedor">
+
+            <div class="titulo">
+                <div class="etiqueta">Versos para un corazón herido</div>
+                <h2>Poemas de desamor</h2>
+
+                <p>
+                    A veces escribir es una manera de despedirnos,
+                    recordar lo vivido y empezar a sanar.
+                </p>
+            </div>
+
+            <div class="poemas">
+
+                <article class="poema">
+                    <div class="simbolo">❧</div>
+                    <h3>Lo que no dijimos</h3>
+
+                    <p class="versos">Quedaron tantas palabras
+guardadas en el silencio,
+tantos sueños esperando
+y tantos abrazos pendientes.
+
+Nos despedimos despacio,
+sin saber cómo explicar,
+que a veces dos corazones
+también se pueden soltar.</p>
+
+                    <p class="autoria">Autor: Eunice Say</p>
+                </article>
+
+                <article class="poema">
+                    <div class="simbolo">☾</div>
+                    <h3>Un recuerdo más</h3>
+
+                    <p class="versos">Aún recuerdo tu sonrisa
+cuando comienza a llover,
+y las pequeñas promesas
+que soñamos una vez.
+
+Hoy tu nombre es un recuerdo
+que ya no quiero perseguir,
+porque aunque fuiste importante,
+también debo pensar en mí.</p>
+
+                    <p class="autoria">Autor: Eunice Say</p>
+                </article>
+
+                <article class="poema">
+                    <div class="simbolo">✧</div>
+                    <h3>Aprendí a soltar</h3>
+
+                    <p class="versos">No fue sencillo olvidarte,
+ni aceptar que todo acabó,
+pero entre lágrimas y noches
+algo dentro de mí cambió.
+
+Hoy recojo mis pedazos
+sin reproches ni rencor,
+y comprendo que perderte
+no significa perder mi valor.</p>
+
+                    <p class="autoria">Autor: Eunice Say</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- REFLEXIÓN -->
+    <section class="reflexion">
+        <div class="contenedor">
+
+            <div class="etiqueta">Una verdad para recordar</div>
+
+            <blockquote>
+                “Que una historia termine no significa
+                que lo vivido haya perdido su valor.”
+            </blockquote>
+
+            <p class="firma">Eunice Say</p>
+
+            <p>
+                Cada experiencia nos enseña algo. A veces el amor
+                no permanece para siempre, pero podemos conservar
+                los buenos recuerdos, aprender de los errores
+                y seguir adelante sin dejar de creer en nosotros.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- FRASES -->
+    <section>
+        <div class="contenedor">
+
+            <div class="titulo">
+                <div class="etiqueta">Palabras que acompañan</div>
+                <h2>Frases de desamor</h2>
+
+                <p>
+                    Para esos días en los que necesitamos poner
+                    en palabras lo que sentimos.
+                </p>
+            </div>
+
+            <div class="frases">
+
+                <div class="frase">
+                    “A veces extrañar a alguien no significa
+                    que debamos volver a buscarlo.”
+                    <p>Autor: Eunice Say</p>
+                </div>
+
+                <div class="frase">
+                    “Hay despedidas que duelen, pero también
+                    abren espacio para nuevos comienzos.”
+                    <p>Autor: Eunice Say</p>
+                </div>
+
+                <div class="frase">
+                    “No todo lo que termina fue un error;
+                    algunas historias simplemente cumplen su tiempo.”
+                    <p>Autor: Eunice Say</p>
+                </div>
+
+                <div class="frase">
+                    “Mereces un amor que te dé tranquilidad,
+                    no uno que te haga dudar de tu valor.”
+                    <p>Autor: Eunice Say</p>
+                </div>
+
+                <div class="frase">
+                    “Sanar no es olvidar lo ocurrido,
+                    sino aprender a recordarlo sin lastimarte.”
+                    <p>Autor: Eunice Say</p>
+                </div>
+
+                <div class="frase">
+                    “También es amor propio elegir la paz
+                    cuando quedarse duele demasiado.”
+                    <p>Autor: Eunice Say</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="final">
+        <div class="contenedor">
+
+            <div class="etiqueta">Un nuevo comienzo</div>
+
+            <h2>Después de la lluvia</h2>
+
+            <p>
+                Permítete sentir, llorar si lo necesitas y darte
+                el tiempo para sanar. No tienes que estar bien
+                de un día para otro. Tu historia no termina con
+                una despedida: todavía quedan muchas páginas
+                por escribir y nuevas razones para sonreír.
+            </p>
+
+            <div class="decoracion">❧ ✧ ❧</div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <strong>2026 Versos del alma - Elaborado por Eunice Say</strong>
+    <br>
+    <small>Incluso los corazones rotos pueden volver a florecer.</small>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+    }
+
+    const simbolos = ["✧", "✦", "✧", "✩"];
+    const cantidadMaxima = 16;
+
+    const capa = document.createElement("div");
+    capa.id = "capa-destellos";
+    document.body.appendChild(capa);
+
+    function crearDestello() {
+        if (capa.childElementCount >= cantidadMaxima) {
+            return;
+        }
+
+        const destello = document.createElement("span");
+        destello.className = "destello-flotante";
+        destello.textContent =
+            simbolos[Math.floor(Math.random() * simbolos.length)];
+
+        const duracion = 8 + Math.random() * 5;
+
+        destello.style.left = Math.random() * 95 + "vw";
+        destello.style.fontSize = (12 + Math.random() * 14) + "px";
+        destello.style.animationDuration = duracion + "s";
+
+        capa.appendChild(destello);
+
+        destello.addEventListener("animationend", function () {
+            destello.remove();
+        });
+    }
+
+    for (let i = 0; i < 7; i++) {
+        setTimeout(crearDestello, i * 350);
+    }
+
+    setInterval(crearDestello, 850);
+});
+</script>
+
+</body>
+</html>
